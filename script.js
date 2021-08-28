@@ -19,7 +19,8 @@ function getApi() {
       })
       
     .then(function (data) {
-        
+        console.log(data)
+        // console.log(data.list[0].dt_txt)
               
         // var tempData = data.main.temp;
         // var humData = data.main.humidity;
@@ -27,13 +28,25 @@ function getApi() {
         // tempVal.textContent = tempData        
         // humVal.textContent = humData        
         // windVal.textContent = windData        
-          
-        console.log(data.list[0].dt_txt)
-        console.log(data)
-        // console.log(tempData)
+        // 
+        for(var i = 0; i < data.list.length; i++){
+        var x = data.list[i].dt_txt
+        var y = x.split(' ')
+        // console.log(x)
+        // console.log(y)
+
+        if(y[1] === "00:00:00"){
+
+        console.log(y[0])
+        // console.log(data.list[i].dt_txt)
+    }
+    
+
+        } 
+    })
   
-      });
-  }
+
+}
 
   
 
@@ -49,9 +62,9 @@ function getApi() {
     //     xhr.send();
     
 
-    searchBtn.addEventListener("click", function(){
-        console.log(userInput.value)
-    })
+    // searchBtn.addEventListener("click", function(){
+    //     console.log(userInput.value)
+    // })
     
 
 
