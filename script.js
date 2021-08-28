@@ -1,5 +1,7 @@
 // var div1 = document.querySelector(".div1")
 var APIKey = "e435637a5f14a87e81f5614e146cda4a";
+var userInput = document.querySelector(".user-input")
+var searchBtn = document.querySelector("#search-button")
 
 
 function getApi() {
@@ -21,6 +23,12 @@ function getApi() {
         //   }
       });
   }
+
+    searchBtn.addEventListener("click", function(){
+    console.log(userInput.value)})
+
+
+
   getApi()
   
 
