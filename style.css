@@ -1,0 +1,8 @@
+.banner{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(35,241,250,1) 0%, rgba(91,22,163,1) 90.1% );
+    /* display:flex; */
+}
+
+/* .banner-col{
+    justify-content: center;
+} */
