@@ -6,11 +6,13 @@ var tempVal = document.querySelector(".temp")
 var windVal = document.querySelector(".wind")
 var humVal = document.querySelector(".humidity")
 var uvVal = document.querySelector(".uv")
+var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+
 
 function getApi() {
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
   
-    fetch(requestUrl)
+    fetch(requestUrl5df)
       
     .then(function (response) {
         return response.json();
@@ -19,25 +21,43 @@ function getApi() {
     .then(function (data) {
         
               
-        var tempData = data.main.temp;
-        var humData = data.main.humidity;
-        var windData = data.wind.speed;
-        tempVal.textContent = tempData        
-        humVal.textContent = humData        
-        windVal.textContent = windData        
+        // var tempData = data.main.temp;
+        // var humData = data.main.humidity;
+        // var windData = data.wind.speed;
+        // tempVal.textContent = tempData        
+        // humVal.textContent = humData        
+        // windVal.textContent = windData        
           
+        console.log(data.list[0].dt_txt)
         console.log(data)
-        console.log(tempData)
+        // console.log(tempData)
   
       });
   }
 
+  
+
+    // var xhr = new XMLHttpRequest("https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial");
+    // xhr.onreadystatechange = function () {
+
+    //   if (xhr.readyState === XMLHttpRequest.DONE) {
+    //     console.log('XMLHttpRequest Response \n-------------');
+    //     console.log(xhr.response);
+    //     }
+    // }
+    // xhr.open('GET', requestUrl5df);
+    //     xhr.send();
+    
+
     searchBtn.addEventListener("click", function(){
-    console.log(userInput.value)})
+        console.log(userInput.value)
+    })
+    
 
 
 
   getApi()
+//   getApi1()
   
 
 //   API key e435637a5f14a87e81f5614e146cda4a
