@@ -6,16 +6,24 @@ var tempVal = document.querySelector(".temp")
 var windVal = document.querySelector(".wind")
 var humVal = document.querySelector(".humidity")
 var uvVal = document.querySelector(".uv")
-var date1 = document.getElementById("date1")
-var date2 = document.getElementById("date2")
-var date3 = document.getElementById("date3")
-var date4 = document.getElementById("date4")
-var date5 = document.getElementById("date5")
+var img1 = document.getElementById("img1")
+var img2 = document.getElementById("img2")
+var img3 = document.getElementById("img3")
+var img4 = document.getElementById("img4")
+var img5 = document.getElementById("img5")
+var date1 = document.querySelector(".date1")
+var date2 = document.querySelector(".date2")
+var date3 = document.querySelector(".date3")
+var date4 = document.querySelector(".date4")
+var date5 = document.querySelector(".date5")
 
 
-var arr = []
+var icn = []
+var dateArr = []
 var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
-var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=orlando&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+
+// console.log(fiveDay)
 function getApi() {
   
     fetch(requestUrl5df)
@@ -42,19 +50,38 @@ function getApi() {
                 // console.log(y)
 
                         if(y[1] === "12:00:00"){
-        
+                            const date = document.createElement('p')
+
+                            date.textContent = y[0]
+                            dateArr.push(date.textContent)
+
+                            var img = document.createElement('img')
                             var icon = document.createAttribute('src')
                             icon.value = 'http://openweathermap.org/img/wn/'+data.list[i].weather[0].icon+'@2x.png'
-                            arr.push(icon.value)
-                            console.log(arr)
-                            
+                            img.setAttribute('src', icon)
+                            icn.push(icon.value)
+
+
+                           
                         } 
                 }
-                date1.setAttribute('src', arr[0])
-                date2.setAttribute('src', arr[1])
-                date3.setAttribute('src', arr[2])
-                date4.setAttribute('src', arr[3])
-                date5.setAttribute('src', arr[4])
+console.log(dateArr[0])
+                            
+
+
+                // date1.appendChild(dateArr[0])                  
+                // date2.appendChild(dateArr[1])                  
+                // date3.appendChild(dateArr[2])                  
+                // date4.appendChild(dateArr[3])                  
+                // date5.appendChild(dateArr[4])       
+
+                img1.setAttribute('src', icn[0])
+                img2.setAttribute('src', icn[1])
+                img3.setAttribute('src', icn[2])
+                img4.setAttribute('src', icn[3])
+                img5.setAttribute('src', icn[4])
+
+               
                             
                             
                     
