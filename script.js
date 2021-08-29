@@ -15,7 +15,7 @@ var date5 = document.getElementById("date5")
 
 var arr = []
 var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
-var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
 function getApi() {
   
     fetch(requestUrl5df)
@@ -45,15 +45,16 @@ function getApi() {
         
                             var icon = document.createAttribute('src')
                             icon.value = 'http://openweathermap.org/img/wn/'+data.list[i].weather[0].icon+'@2x.png'
-                            arr.push(icon)
-                            console.log(arr.length)
-
-                            // for(var j = 0; j <
-                            date1.setAttribute('src', icon.value)
-                            
+                            arr.push(icon.value)
+                            console.log(arr)
                             
                         } 
                 }
+                date1.setAttribute('src', arr[0])
+                date2.setAttribute('src', arr[1])
+                date3.setAttribute('src', arr[2])
+                date4.setAttribute('src', arr[3])
+                date5.setAttribute('src', arr[4])
                             
                             
                     
