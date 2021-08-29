@@ -49,15 +49,18 @@ var dateArr = []
 var tempArr = []
 var windArr = []
 var humArr = []
-var city
+let city
 var requestUrl
 var requestUrl5df
+var oneCallApi
 var coord
+var lon
+var lat
+
+
 
 function getApi() {
-    city = userInput.value.toUpperCase() 
     requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
-
     fetch(requestUrl)
       
         .then(function (response) {
@@ -72,9 +75,35 @@ function getApi() {
                 tempVal.textContent = tempData        
                 humVal.textContent = humData        
                 windVal.textContent = windData    
-
+                coord = data.coord
+                lon = coord.lon
+                lat = coord.lat  
+                console.log(lat)
             })
+
 }        
+
+function getOneCall() {
+        console.log(lat)
+        oneCallApi = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&appid=e435637a5f14a87e81f5614e146cda4a'
+        fetch(oneCallApi)
+      
+        .then(function (response) {
+            return response.json();
+        })
+      
+            .then(function (data) {
+                    console.log(data)
+            })
+    
+        console.log(lon)
+
+}
+
+
+
+
+
 
 
 function getApi1() {
@@ -124,11 +153,11 @@ function getApi1() {
                             img.setAttribute('src', icon)
                             icnArr.push(icon.value)
                             
+                         } 
+                 }
+                            
+        
 
-
-                           
-                        } 
-                }
                 
                 date1.textContent = dateArr[0].innerText                 
                 date3.textContent = dateArr[1].innerText                 
@@ -166,47 +195,89 @@ function getApi1() {
               
               }
               
-                   
-              
-              
-              
-              
-                getApi()
-                getApi1()
-
+ 
                 
                 searchBtn.addEventListener("click", function(){
+                    city = userInput.value.toUpperCase() 
                     cityName.textContent= city
-                    console.log(cityName)
-                    fetch(requestUrl)
+
+                    // fetch(oneCallApi)
       
-                    .then(function (response) {
-                        return response.json();
-                    })
+                    // .then(function (response) {
+                    //     return response.json();
+                    // })
                   
-                        .then(function (data) {
-                            coord = data.coord
-                            console.log(coord)
-                        })
+                    //     .then(function (data) {
+                          
+                    //     })
                     getApi()
                     getApi1()
+                    getOneCall()
                      return
                 })
                 austin.addEventListener("click", function(){
+                    city = "Austin" 
+                    cityName.textContent = city
+                    getApi()
+                    getApi1()
+                    getOneCall()
+
                 })
                 chicago.addEventListener("click", function(){
-                })
+                city = "Chicago" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
+                })  
                 newYork.addEventListener("click", function(){
+                    city = "New York" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
                 })
                 orlando.addEventListener("click", function(){
+                    city = "Orlando" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
                 })
                 sanFrancisco.addEventListener("click", function(){
+                    city = "San Francisco" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
                 })
                 seattle.addEventListener("click", function(){
+                    city = "Seattle" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
                 })
                 denver.addEventListener("click", function(){
+                    city = "Denver" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
                 })
                 atlanta.addEventListener("click", function(){
+                    city = "Atlanta" 
+                cityName.textContent = city
+                getApi()
+                getApi1()
+                getOneCall()
+
                 })
                 
                 
