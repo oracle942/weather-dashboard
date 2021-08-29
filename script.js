@@ -52,9 +52,12 @@ var humArr = []
 var city
 var requestUrl
 var requestUrl5df
+var coord
 
 function getApi() {
-  
+    city = userInput.value.toUpperCase() 
+    requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+
     fetch(requestUrl)
       
         .then(function (response) {
@@ -75,6 +78,8 @@ function getApi() {
 
 
 function getApi1() {
+    requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+
   
     fetch(requestUrl5df)
       
@@ -166,18 +171,25 @@ function getApi1() {
               
               
               
-                // getApi()
-                // getApi1()
+                getApi()
+                getApi1()
 
                 
                 searchBtn.addEventListener("click", function(){
-                    city = userInput.value.toUpperCase() 
-                    requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
-                    requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
                     cityName.textContent= city
                     console.log(cityName)
-                     getApi()
-                     getApi1()
+                    fetch(requestUrl)
+      
+                    .then(function (response) {
+                        return response.json();
+                    })
+                  
+                        .then(function (data) {
+                            coord = data.coord
+                            console.log(coord)
+                        })
+                    getApi()
+                    getApi1()
                      return
                 })
                 austin.addEventListener("click", function(){
