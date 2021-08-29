@@ -16,10 +16,15 @@ var date2 = document.querySelector(".date2")
 var date3 = document.querySelector(".date3")
 var date4 = document.querySelector(".date4")
 var date5 = document.querySelector(".date5")
+var temp1 = document.querySelector(".temp1")
+var temp2 = document.querySelector(".temp2")
+var temp3 = document.querySelector(".temp3")
+var temp4 = document.querySelector(".temp4")
 
 
 var icn = []
 var dateArr = []
+var tempArr = []
 var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
 var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=orlando&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
 
@@ -33,7 +38,6 @@ function getApi() {
         })
       
             .then(function (data) {
-                console.log(data)
                     
                 var tempData = data.main.temp;
                 var humData = data.main.humidity;
@@ -55,21 +59,25 @@ function getApi1() {
         })
       
             .then(function (data) {
-                console.log(data)     
-                
+                console.log(data)
                 for(var i = 0; i < data.list.length; i++){
                 var x = data.list[i].dt_txt
                 var y = x.split(' ')
-                // console.log(x)
-                // console.log(y)
+
+                var tempData = data.list[i].main.temp
+            //    console.log(tempData)
 
                         if(y[1] === "12:00:00"){
                             const date = document.createElement('p')
-                            var t = document.createTextNode(y[0])
-                            date.appendChild(t)
-                            console.log(date)
-                            // date.textContent = y[0]
+                            var node = document.createTextNode(y[0])
+                            date.appendChild(node)
                             dateArr.push(date)
+
+                            const temp = document.createElement('p')
+                            temp.textContent = tempData
+                            tempArr.push(temp)
+                            
+
 
                             var img = document.createElement('img')
                             var icon = document.createAttribute('src')
@@ -81,15 +89,19 @@ function getApi1() {
                            
                         } 
                 }
-// console.log(dateArr[1].innerText)
                             
-
-
+                console.log(tempArr)
                 date1.textContent = dateArr[0].innerText                 
-                date2.textContent = dateArr[1].innerText                 
-                date3.textContent = dateArr[2].innerText                 
+                date3.textContent = dateArr[1].innerText                 
+                date2.textContent = dateArr[2].innerText                 
                 date4.textContent = dateArr[3].innerText                 
-                date5.textContent = dateArr[4].innerText                 
+                date5.textContent = dateArr[4].innerText 
+                
+                temp1.innerText = "Temp: " + tempArr[0].innerText
+                temp2.innerText = "Temp: " + tempArr[1].innerText
+                temp3.textContent = "Temp: " + tempArr[2].innerText
+                temp4.textContent = "Temp: " + tempArr[3].innerText
+                temp5.textContent = "Temp: " + tempArr[4].innerText
                    
 
                 img1.setAttribute('src', icn[0])
@@ -106,7 +118,6 @@ function getApi1() {
                    
               
                   // searchBtn.addEventListener("click", function(){
-                  //     console.log(userInput.value)
                   // })
                   
               
