@@ -1,16 +1,18 @@
 // var div1 = document.querySelector(".div1")
 var APIKey = "e435637a5f14a87e81f5614e146cda4a";
+
 var userInput = document.querySelector(".user-input")
-var searchBtn = document.querySelector("#search-button")
-var searchBtn = document.querySelector("#Austin")
-var searchBtn = document.querySelector("#Chicago")
-var searchBtn = document.querySelector("#New-York")
-var searchBtn = document.querySelector("#Orlando")
-var searchBtn = document.querySelector("#San-Francisco")
-var searchBtn = document.querySelector("#Seattle")
-var searchBtn = document.querySelector("#Denver")
-var searchBtn = document.querySelector("#Atlanta")
-var searchBtn = document.querySelector("#Atlanta")
+var cityName = document.querySelector(".city-name")
+var  searchBtn= document.querySelector("#search-button")
+var  austin= document.querySelector("#Austin")
+var  chicago= document.querySelector("#Chicago")
+var  newYork= document.querySelector("#New-York")
+var  orlando= document.querySelector("#Orlando")
+var  sanFrancisco= document.querySelector("#San-Francisco")
+var  seattle= document.querySelector("#Seattle")
+var  denver= document.querySelector("#Denver")
+var  atlanta= document.querySelector("#Atlanta")
+
 var tempVal = document.querySelector(".temp")
 var windVal = document.querySelector(".wind")
 var humVal = document.querySelector(".humidity")
@@ -47,9 +49,9 @@ var dateArr = []
 var tempArr = []
 var windArr = []
 var humArr = []
-var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=houston&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
-var requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q=orlando&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
-
+var city
+var requestUrl
+var requestUrl5df
 
 function getApi() {
   
@@ -122,7 +124,6 @@ function getApi1() {
                            
                         } 
                 }
-                console.log(humArr[0])      
                 
                 date1.textContent = dateArr[0].innerText                 
                 date3.textContent = dateArr[1].innerText                 
@@ -162,16 +163,42 @@ function getApi1() {
               
                    
               
-                  searchBtn.addEventListener("click", function(){
-                  })
-                  
               
               
               
-                getApi()
-                getApi1()
+                // getApi()
+                // getApi1()
+
                 
-              
+                searchBtn.addEventListener("click", function(){
+                    city = userInput.value.toUpperCase() 
+                    requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+                    requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
+                    cityName.textContent= city
+                    console.log(cityName)
+                     getApi()
+                     getApi1()
+                     return
+                })
+                austin.addEventListener("click", function(){
+                })
+                chicago.addEventListener("click", function(){
+                })
+                newYork.addEventListener("click", function(){
+                })
+                orlando.addEventListener("click", function(){
+                })
+                sanFrancisco.addEventListener("click", function(){
+                })
+                seattle.addEventListener("click", function(){
+                })
+                denver.addEventListener("click", function(){
+                })
+                atlanta.addEventListener("click", function(){
+                })
+                
+                
+                
               //   API key e435637a5f14a87e81f5614e146cda4a
 
                
