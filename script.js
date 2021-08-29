@@ -54,8 +54,10 @@ var requestUrl
 var requestUrl5df
 var oneCallApi
 var coord
-var lon
-var lat
+let lon
+let lat
+var lonStr
+var latStr
 
 
 
@@ -78,16 +80,20 @@ function getApi() {
                 coord = data.coord
                 lon = coord.lon
                 lat = coord.lat  
-                console.log(lat)
+                lonStr = lon.toString()
+                latStr = lat.toString()
+                console.log(typeof lonStr)
             })
 
 }        
 
 function getOneCall() {
+        // var latStr = lat.toString()
+        // var lonStr = lon.toString()
         console.log(lat)
-        oneCallApi = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&appid=e435637a5f14a87e81f5614e146cda4a'
+        oneCallApi = 'https://api.openweathermap.org/data/2.5/onecall?lat='+latStr+'&lon='+lonStr+'&appid=e435637a5f14a87e81f5614e146cda4a'
         fetch(oneCallApi)
-      
+        
         .then(function (response) {
             return response.json();
         })
@@ -96,7 +102,6 @@ function getOneCall() {
                     console.log(data)
             })
     
-        console.log(lon)
 
 }
 
