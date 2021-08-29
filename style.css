@@ -5,3 +5,7 @@
 hr.solid {
     border-top: 3px solid rgb(187, 32, 32);
   }
+
+  img{
+      z-index: 100;
+  }
