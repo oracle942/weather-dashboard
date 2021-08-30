@@ -21,7 +21,14 @@ This application makes use of three APIs from Open Weather Map. All data display
 
 This application employs local storage to save the users last search. If the browser is closed, a the site is accessed from a new browser page the site displays the user’s last search results.  
 
+Below is a list of features that are considered for future development:
+•	Dynamically generated HTML elements with Javascript. 
+•	Date generation using Moment.js
+
+
 
 ## NOTES
 
-Some unexpected results occur wiSome unexpected results occur when employing the APIs. Weather icons display without color only on occasion. Accurate UV Index readings sometimes require more than one button click.  
+Some unexpected results occur when employing the APIs. Weather icons display without color only on occasion. Accurate UV Index readings sometimes require more than one button click.  
+
+The date is programmed to display to the right of the city name displayed when a search is entered. The code runs locally but has failed in the github host. 
