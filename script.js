@@ -56,8 +56,10 @@ var oneCallApi
 var coord
 let lon
 let lat
-var lonStr
-var latStr
+let lonStr
+let latStr
+var uvi
+// console.log(city)
 
 
 
@@ -82,16 +84,15 @@ function getApi() {
                 lat = coord.lat  
                 lonStr = lon.toString()
                 latStr = lat.toString()
-                console.log(typeof lonStr)
             })
+
+
 
 }        
 
 function getOneCall() {
-        // var latStr = lat.toString()
-        // var lonStr = lon.toString()
         console.log(lat)
-        oneCallApi = 'https://api.openweathermap.org/data/2.5/onecall?lat='+latStr+'&lon='+lonStr+'&appid=e435637a5f14a87e81f5614e146cda4a'
+        oneCallApi = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&appid=e435637a5f14a87e81f5614e146cda4a'
         fetch(oneCallApi)
         
         .then(function (response) {
@@ -99,22 +100,17 @@ function getOneCall() {
         })
       
             .then(function (data) {
-                    console.log(data)
+                uvi = data.current.uvi
+                uvVal.textContent = uvi
             })
+                
     
 
 }
 
-
-
-
-
-
-
 function getApi1() {
     requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
 
-  
     fetch(requestUrl5df)
       
         .then(function (response) {
@@ -122,7 +118,12 @@ function getApi1() {
         })
       
             .then(function (data) {
-                console.log(data)
+                icnArr = []
+                dateArr = []
+                tempArr = []
+                windArr = []
+                humArr = []
+
                 for(var i = 0; i < data.list.length; i++){
                 var x = data.list[i].dt_txt
                 var y = x.split(' ')
@@ -130,7 +131,6 @@ function getApi1() {
                 var tempData = data.list[i].main.temp
                 var windData = data.list[i].wind.speed
                 var humData = data.list[i].main.humidity
-            //    console.log(tempData)
 
                         if(y[1] === "12:00:00"){
                             const date = document.createElement('p')
@@ -150,8 +150,6 @@ function getApi1() {
                             hum.textContent = humData
                             humArr.push(hum)
                             
-
-
                             var img = document.createElement('img')
                             var icon = document.createAttribute('src')
                             icon.value = 'http://openweathermap.org/img/wn/'+data.list[i].weather[0].icon+'@2x.png'
@@ -159,6 +157,11 @@ function getApi1() {
                             icnArr.push(icon.value)
                             
                          } 
+                 }
+
+
+                 function store () {
+                     
                  }
                             
         
@@ -203,18 +206,10 @@ function getApi1() {
  
                 
                 searchBtn.addEventListener("click", function(){
+
                     city = userInput.value.toUpperCase() 
                     cityName.textContent= city
 
-                    // fetch(oneCallApi)
-      
-                    // .then(function (response) {
-                    //     return response.json();
-                    // })
-                  
-                    //     .then(function (data) {
-                          
-                    //     })
                     getApi()
                     getApi1()
                     getOneCall()
@@ -224,8 +219,8 @@ function getApi1() {
                     city = "Austin" 
                     cityName.textContent = city
                     getApi()
-                    getApi1()
                     getOneCall()
+                    getApi1()
 
                 })
                 chicago.addEventListener("click", function(){
