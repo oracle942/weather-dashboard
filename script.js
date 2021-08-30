@@ -1,6 +1,7 @@
 // var div1 = document.querySelector(".div1")
 var APIKey = "e435637a5f14a87e81f5614e146cda4a";
 
+// Main display and sidebar variable list
 var userInput = document.querySelector(".user-input")
 var cityName = document.querySelector(".city-name")
 var dateDisplay = document.querySelector(".today")
@@ -13,11 +14,12 @@ var sanFrancisco = document.querySelector("#San-Francisco")
 var seattle = document.querySelector("#Seattle")
 var denver = document.querySelector("#Denver")
 var atlanta = document.querySelector("#Atlanta")
-
 var tempVal = document.querySelector(".temp")
 var windVal = document.querySelector(".wind")
 var humVal = document.querySelector(".humidity")
 var uvVal = document.querySelector(".uv")
+
+// 5-day-forecast variable list
 var img1 = document.getElementById("img1")
 var img2 = document.getElementById("img2")
 var img3 = document.getElementById("img3")
@@ -44,12 +46,14 @@ var hum3 = document.querySelector(".hum3")
 var hum4 = document.querySelector(".hum4")
 var hum5 = document.querySelector(".hum5")
 
-
+// Data array decrlarations 
 var icnArr = []
 var dateArr = []
 var tempArr = []
 var windArr = []
 var humArr = []
+
+// Variable declarations and definitions for variables used locally in API fetch functions and local storage
 let city 
 let cityNameStr = localStorage.getItem('storedCityName')
 city = cityNameStr
@@ -66,7 +70,7 @@ let latStr
 var uvi
 
 
-
+// Current weather data API fetch function
 function getApi() {
     requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
     fetch(requestUrl)
@@ -74,7 +78,6 @@ function getApi() {
         .then(function (response) {
             return response.json();
         })
-      
             .then(function (data) {
                     
                 var tempData = data.main.temp;
@@ -88,14 +91,11 @@ function getApi() {
                 lat = coord.lat  
                 lonStr = lon.toString()
                 latStr = lat.toString()
-            })
+            })}        
+      
 
-
-
-}        
-
+// UV Index data API fetch and data parsing function           
 function getOneCall() {
-        console.log(lat)
         oneCallApi = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&appid=e435637a5f14a87e81f5614e146cda4a'
         fetch(oneCallApi)
         
@@ -106,12 +106,9 @@ function getOneCall() {
             .then(function (data) {
                 uvi = data.current.uvi
                 uvVal.textContent = uvi
-            })
-                
-    
+            })}
 
-}
-
+// 5-day-forecast data API fetch and data parsing function
 function getApi1() {
     requestUrl5df = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=e435637a5f14a87e81f5614e146cda4a&units=imperial';
 
@@ -131,7 +128,6 @@ function getApi1() {
                 for(var i = 0; i < data.list.length; i++){
                 var x = data.list[i].dt_txt
                 var y = x.split(' ')
-                console.log(data)
                 var tempData = data.list[i].main.temp
                 var windData = data.list[i].wind.speed
                 var humData = data.list[i].main.humidity
@@ -142,9 +138,6 @@ function getApi1() {
                             date.appendChild(node)
                             dateArr.push(date)
                             dateDisplay.innerText = dateArr[0].textContent
-
-                            
-                            
 
                             const temp = document.createElement('p')
                             temp.textContent = tempData
@@ -166,15 +159,8 @@ function getApi1() {
                             
                          } 
                  }
-
-
-                 function store () {
-
-                 }
                             
-        
-
-                
+                // These lists pass API data to html elements for display on screen 
                 date1.textContent = dateArr[0].innerText                 
                 date3.textContent = dateArr[1].innerText                 
                 date2.textContent = dateArr[2].innerText                 
@@ -209,12 +195,15 @@ function getApi1() {
               
                   })
               
-              }
-              
+}
+            //   Run functions on page load
               getApi()
               getApi1()
               getOneCall()
-                
+
+              
+            // Button event listeners 
+            // Local storage declarations    
                 searchBtn.addEventListener("click", function(){
                     city = userInput.value.toUpperCase() 
                     cityName.textContent= city
@@ -300,13 +289,3 @@ function getApi1() {
                 
                 
               //   API key e435637a5f14a87e81f5614e146cda4a
-
-               
-                            
-                            
-                    
-                           
-                            
-
-                            
-                                
