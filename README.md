@@ -11,10 +11,11 @@ Building this application provided a robust learning experience. I learned how t
 
 ## INSTALLATION
 This is a web based application and as such requires no installation. Simply navigate to the URL for access.  
+
 ## USAGE
 To use this application begin by navigating to https://oracle942.github.io/weather-dashboard/ 
 Than simply enter a city in the search bar and press the search button, or select an option by clicking on one of the buttons listed in the left-hand side bar. 
-
+![screenshot](wdb.gif)
 
 ## FEATURES
 This application makes use of three APIs from Open Weather Map. All data displayed is provided by those three APIs. 
@@ -24,6 +25,9 @@ This application employs local storage to save the users last search. If the bro
 Below is a list of features that are considered for future development:
 •	Dynamically generated HTML elements with Javascript. 
 •	Date generation using Moment.js
+•	Round data to one decimal
+•	Modify casing of dity name displayed when a search is performed using the search bar.
+
 
 
 
