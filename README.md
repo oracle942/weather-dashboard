@@ -15,7 +15,7 @@ This is a web based application and as such requires no installation. Simply nav
 ## USAGE
 To use this application begin by navigating to https://oracle942.github.io/weather-dashboard/ 
 Than simply enter a city in the search bar and press the search button, or select an option by clicking on one of the buttons listed in the left-hand side bar. 
-![screenshot](wdb.gif)
+![screenshot](wdb1.gif)
 
 ## FEATURES
 This application makes use of three APIs from Open Weather Map. All data displayed is provided by those three APIs. 
@@ -30,6 +30,6 @@ Below is a list of features that are considered for future development:
 
 ## NOTES
 
-Some unexpected results occur when employing the APIs. Weather icons display without color only on occasion. Accurate UV Index readings sometimes require more than one button click.  
+Some unexpected results occur when employing the APIs. Weather icons display without color only on occasion. Accurate UV Index readings sometimes require more than one button click. Full functionality is demolnstrated in the gif screenshot listed above. 
 
 The date is programmed to display to the right of the city name displayed when a search is entered. The code runs locally but has failed in the github host. 
