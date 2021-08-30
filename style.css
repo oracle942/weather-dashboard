@@ -2,9 +2,6 @@
     background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(35,241,250,1) 0%, rgba(91,22,163,1) 90.1% );
 }
 
-hr.solid {
-    border-top: 3px solid rgb(187, 32, 32);
-  }
 
   img{
       z-index: 100;

@@ -28,9 +28,6 @@ Below is a list of features that are considered for future development:
 •	Round data to one decimal
 •	Modify casing of dity name displayed when a search is performed using the search bar.
 
-
-
-
 ## NOTES
 
 Some unexpected results occur when employing the APIs. Weather icons display without color only on occasion. Accurate UV Index readings sometimes require more than one button click.  
