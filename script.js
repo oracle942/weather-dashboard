@@ -49,7 +49,10 @@ var dateArr = []
 var tempArr = []
 var windArr = []
 var humArr = []
-let city
+let city 
+// let cityNameStr = localStorage.getItem('storedCityName')
+// city.textContent = cityNameStr
+// console.log(cityNameStr)
 var requestUrl
 var requestUrl5df
 var oneCallApi
@@ -161,7 +164,7 @@ function getApi1() {
 
 
                  function store () {
-                     
+
                  }
                             
         
@@ -203,7 +206,9 @@ function getApi1() {
               
               }
               
- 
+              getApi()
+              getApi1()
+              getOneCall()
                 
                 searchBtn.addEventListener("click", function(){
 
@@ -218,6 +223,7 @@ function getApi1() {
                 austin.addEventListener("click", function(){
                     city = "Austin" 
                     cityName.textContent = city
+                    localStorage.setItem('storedCityName', city)
                     getApi()
                     getOneCall()
                     getApi1()

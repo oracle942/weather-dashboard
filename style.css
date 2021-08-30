@@ -9,3 +9,7 @@ hr.solid {
   img{
       z-index: 100;
   }
+
+  .background{
+      background-color: #03045e;
+  }
