@@ -3,15 +3,16 @@ var APIKey = "e435637a5f14a87e81f5614e146cda4a";
 
 var userInput = document.querySelector(".user-input")
 var cityName = document.querySelector(".city-name")
-var  searchBtn= document.querySelector("#search-button")
-var  austin= document.querySelector("#Austin")
-var  chicago= document.querySelector("#Chicago")
-var  newYork= document.querySelector("#New-York")
-var  orlando= document.querySelector("#Orlando")
-var  sanFrancisco= document.querySelector("#San-Francisco")
-var  seattle= document.querySelector("#Seattle")
-var  denver= document.querySelector("#Denver")
-var  atlanta= document.querySelector("#Atlanta")
+var dateDisplay = document.querySelector(".today")
+var searchBtn = document.querySelector("#search-button")
+var austin = document.querySelector("#Austin")
+var chicago = document.querySelector("#Chicago")
+var newYork = document.querySelector("#New-York")
+var orlando = document.querySelector("#Orlando")
+var sanFrancisco = document.querySelector("#San-Francisco")
+var seattle = document.querySelector("#Seattle")
+var denver = document.querySelector("#Denver")
+var atlanta = document.querySelector("#Atlanta")
 
 var tempVal = document.querySelector(".temp")
 var windVal = document.querySelector(".wind")
@@ -50,9 +51,10 @@ var tempArr = []
 var windArr = []
 var humArr = []
 let city 
-// let cityNameStr = localStorage.getItem('storedCityName')
-// city.textContent = cityNameStr
-// console.log(cityNameStr)
+let cityNameStr = localStorage.getItem('storedCityName')
+city = cityNameStr
+cityName.textContent = cityNameStr
+dateDisplay.innerText = dateArr[0]
 var requestUrl
 var requestUrl5df
 var oneCallApi
@@ -62,7 +64,6 @@ let lat
 let lonStr
 let latStr
 var uvi
-// console.log(city)
 
 
 
@@ -130,7 +131,7 @@ function getApi1() {
                 for(var i = 0; i < data.list.length; i++){
                 var x = data.list[i].dt_txt
                 var y = x.split(' ')
-
+                console.log(data)
                 var tempData = data.list[i].main.temp
                 var windData = data.list[i].wind.speed
                 var humData = data.list[i].main.humidity
@@ -140,6 +141,10 @@ function getApi1() {
                             var node = document.createTextNode(y[0])
                             date.appendChild(node)
                             dateArr.push(date)
+                            dateDisplay.innerText = dateArr[0].textContent
+
+                            
+                            
 
                             const temp = document.createElement('p')
                             temp.textContent = tempData
@@ -211,10 +216,9 @@ function getApi1() {
               getOneCall()
                 
                 searchBtn.addEventListener("click", function(){
-
                     city = userInput.value.toUpperCase() 
                     cityName.textContent= city
-
+                    localStorage.setItem('storedCityName', city)
                     getApi()
                     getApi1()
                     getOneCall()
@@ -232,14 +236,16 @@ function getApi1() {
                 chicago.addEventListener("click", function(){
                 city = "Chicago" 
                 cityName.textContent = city
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
 
                 })  
                 newYork.addEventListener("click", function(){
-                    city = "New York" 
-                cityName.textContent = city
+                city = "New York" 
+                cityName.textContent = city 
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
@@ -248,6 +254,7 @@ function getApi1() {
                 orlando.addEventListener("click", function(){
                     city = "Orlando" 
                 cityName.textContent = city
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
@@ -256,6 +263,7 @@ function getApi1() {
                 sanFrancisco.addEventListener("click", function(){
                     city = "San Francisco" 
                 cityName.textContent = city
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
@@ -264,6 +272,7 @@ function getApi1() {
                 seattle.addEventListener("click", function(){
                     city = "Seattle" 
                 cityName.textContent = city
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
@@ -272,6 +281,7 @@ function getApi1() {
                 denver.addEventListener("click", function(){
                     city = "Denver" 
                 cityName.textContent = city
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
@@ -280,6 +290,7 @@ function getApi1() {
                 atlanta.addEventListener("click", function(){
                     city = "Atlanta" 
                 cityName.textContent = city
+                localStorage.setItem('storedCityName', city)
                 getApi()
                 getApi1()
                 getOneCall()
