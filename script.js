@@ -162,8 +162,8 @@ function getApi1() {
                             
                 // These lists pass API data to html elements for display on screen 
                 date1.textContent = dateArr[0].innerText                 
-                date3.textContent = dateArr[1].innerText                 
-                date2.textContent = dateArr[2].innerText                 
+                date2.textContent = dateArr[1].innerText                 
+                date3.textContent = dateArr[2].innerText                 
                 date4.textContent = dateArr[3].innerText                 
                 date5.textContent = dateArr[4].innerText 
                 
