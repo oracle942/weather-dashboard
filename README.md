@@ -3,7 +3,7 @@ This is a repository for a weather dashboard application
 
 
 ## DESCRIPTION
-This application is a weather dashboard meant to provide users with current and forecast weather information about the city entered in the search-bar or select from one of the pre-determined options available on the screen by clicking on buttons. 
+This weather dashboard provides users with current and forecast weather information about the city entered in the search-bar or select from one of the pre-determined options available on the screen by clicking on buttons. 
 
 This solution allows users to easily check the current and forecast weather in many different cities.
 
